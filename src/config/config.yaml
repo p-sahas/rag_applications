@@ -2,7 +2,7 @@
 # This file is shared across all notebooks to avoid duplication
 
 # LLM Settings
-llm_provider: "openrouter"  # Options: openai | openrouter | groq | gemini | ollama | hf_local
+llm_provider: "openai"  # Options: openai | openrouter | groq | gemini | ollama | hf_local
 
 # OpenRouter-specific settings (only used when llm_provider = "openrouter")
 openrouter_provider: "openai"  # Options: openai | google | anthropic | meta | mistral | cohere
