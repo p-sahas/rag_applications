@@ -372,7 +372,7 @@ def validate_api_keys(config: Dict[str, Any], verbose: bool = True) -> Dict[str,
     for key, value in api_keys.items():
         availability[key] = value is not None
         if verbose and not value:
-            warnings.warn(f"⚠️  {key} not found in environment")
+            warnings.warn(f"  {key} not found in environment")
     
     return availability
 
@@ -384,7 +384,7 @@ def print_config_summary(config: Dict[str, Any]) -> None:
     Args:
         config: Configuration dictionary
     """
-    print("✅ Config loaded:")
+    print(" Config loaded:")
     
     # Display LLM info with OpenRouter-specific formatting
     if config['llm_provider'] == 'openrouter':
@@ -421,7 +421,7 @@ if __name__ == "__main__":
     print()
     
     # Validate API keys
-    print("🔑 API Key Status:")
+    print(" API Key Status:")
     availability = validate_api_keys(config, verbose=False)
     for key, available in availability.items():
         status = "✅" if available else "❌"
@@ -431,16 +431,16 @@ if __name__ == "__main__":
     # Initialize LangChain LLM
     try:
         llm = get_llm(config)
-        print(f"✅ LangChain LLM initialized: {config['llm_provider']}")
+        print(f" LangChain LLM initialized: {config['llm_provider']}")
     except Exception as e:
-        print(f"❌ LangChain LLM failed: {e}")
+        print(f" LangChain LLM failed: {e}")
     
     # Initialize LangChain embeddings
     try:
         embeddings = get_text_embeddings(config)
-        print(f"✅ LangChain embeddings initialized: {config['text_emb_provider']}")
+        print(f" LangChain embeddings initialized: {config['text_emb_provider']}")
     except Exception as e:
-        print(f"❌ LangChain embeddings failed: {e}")
+        print(f" LangChain embeddings failed: {e}")
     
-    print("\n🎉 All services initialized successfully!")
+    print("\n All services initialized successfully!")
 
